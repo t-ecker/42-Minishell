@@ -6,7 +6,7 @@
 #    By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 17:09:19 by dolifero          #+#    #+#              #
-#    Updated: 2024/06/03 18:15:41 by dolifero         ###   ########.fr        #
+#    Updated: 2024/06/03 18:22:45 by dolifero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,35 +55,14 @@ WHITE		=	\033[0;97m
 
 all:			$(NAME)
 				clear;
-				@echo "\n$(BR_CYAN)              _       _      __         ____"
-				@echo "   ____ ___  (_)___  (_)____/ /_  ___  / / /"
-				@echo "  / __  __ \/ / __ \/ / ___/ __ \/ _ \/ / / "
-				@echo " / / / / / / / / / / (__  ) / / /  __/ / /  "
-				@echo "/_/ /_/ /_/_/_/ /_/_/____/_/ /_/\___/_/_/   "
-				@echo "                                            $(BOLD_CYAN)\n"
+				@$(MAKE) SHELL_CYAN
 				@$(MAKE) loading
 				clear;
-				@echo "\n$(GREEN)              _       _      __         ____"
-				@echo "   ____ ___  (_)___  (_)____/ /_  ___  / / /"
-				@echo "  / __  __ \/ / __ \/ / ___/ __ \/ _ \/ / / "
-				@echo " / / / / / / / / / / (__  ) / / /  __/ / /        $(BOLD_GREEN)-tecker$(GREEN)"
-				@echo "/_/ /_/ /_/_/_/ /_/_/____/_/ /_/\___/_/_/        $(BOLD_GREEN)-dolifero$(GREEN)"
-				@echo "                                            $(DEF_COLOR)\n"
+				@$(MAKE) SHELL_GREEN
 				@echo "             $(BOLD_GREEN)${NAME} DONE!\n$(DEF_COLOR)"
 
 $(NAME):		$(OBJS) $(LIBFT)
 				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) -L $(LIBFT_DIR) -lft
-
-SHELL_CYAN:
-
-SHELL_GREEN:
-
-
-loading:
-				@for i in {1..42}; do \
-					printf '%s' "█"; \
-					sleep 0.01; \
-				done
 
 $(LIBFT):
 				$(MAKE) -C $(LIBFT_DIR)
@@ -101,7 +80,28 @@ fclean:
 				$(RM) $(OBJS) $(NAME) $(LIBFT_DIR)/*.o $(LIBFT)
 				@echo "$(DEF_COLOR)"
 
-
 re:				fclean all
+
+SHELL_CYAN:
+				@echo "\n$(BR_CYAN)              _       _      __         ____"
+				@echo "   ____ ___  (_)___  (_)____/ /_  ___  / / /"
+				@echo "  / __  __ \/ / __ \/ / ___/ __ \/ _ \/ / / "
+				@echo " / / / / / / / / / / (__  ) / / /  __/ / /  "
+				@echo "/_/ /_/ /_/_/_/ /_/_/____/_/ /_/\___/_/_/   "
+				@echo "                                            $(BOLD_CYAN)\n"
+
+SHELL_GREEN:
+				@echo "\n$(GREEN)              _       _      __         ____"
+				@echo "   ____ ___  (_)___  (_)____/ /_  ___  / / /"
+				@echo "  / __  __ \/ / __ \/ / ___/ __ \/ _ \/ / / "
+				@echo " / / / / / / / / / / (__  ) / / /  __/ / /        $(BOLD_GREEN)-tecker$(GREEN)"
+				@echo "/_/ /_/ /_/_/_/ /_/_/____/_/ /_/\___/_/_/        $(BOLD_GREEN)-dolifero$(GREEN)"
+				@echo "                                            $(DEF_COLOR)\n"
+
+loading:
+				@for i in {1..42}; do \
+					printf '%s' "█"; \
+					sleep 0.01; \
+				done
 
 .PHONY:			all clean fclean re
