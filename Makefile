@@ -6,7 +6,7 @@
 #    By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 17:09:19 by dolifero          #+#    #+#              #
-#    Updated: 2024/06/03 18:22:45 by dolifero         ###   ########.fr        #
+#    Updated: 2024/06/03 18:26:07 by dolifero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,13 +62,13 @@ all:			$(NAME)
 				@echo "             $(BOLD_GREEN)${NAME} DONE!\n$(DEF_COLOR)"
 
 $(NAME):		$(OBJS) $(LIBFT)
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) -L $(LIBFT_DIR) -lft
+				@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) -L $(LIBFT_DIR) -lft
 
 $(LIBFT):
-				$(MAKE) -C $(LIBFT_DIR)
+				@$(MAKE) -C $(LIBFT_DIR)
 
 %.o: %.c
-				$(CC) $(CFLAGS) -c $< -o $@
+				@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 				@echo "$(CYAN)"
