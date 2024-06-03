@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 16:52:33 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/03 17:26:50 by dolifero         ###   ########.fr       */
+/*   Created: 2024/06/03 17:01:27 by dolifero          #+#    #+#             */
+/*   Updated: 2024/06/03 17:03:19 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	leaks(void)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	system("leaks minishell");
-}
+	size_t	i;
+	size_t	j;
 
-int	main(void)
-{
-	char	*input;
-
-	atexit(leaks);
-	while (1)
+	i = 0;
+	if (ft_strlen(needle) == 0)
+		return ((char *)haystack);
+	while (haystack[i])
 	{
-		input = readline("\033[1;36mminishell > \033[0;39m");
-		if (ft_strstr(input, "exit"))
+		j = 0;
+		while (haystack[i + j] == needle[j])
 		{
-			free(input);
-			exit (0);
+			if (j == (size_t)ft_strlen(needle) - 1)
+				return ((char *)&haystack[i]);
+			j++;
 		}
+		i++;
 	}
+	return (NULL);
 }

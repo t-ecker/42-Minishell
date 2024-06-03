@@ -6,7 +6,7 @@
 #    By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/07 14:48:30 by dolifero          #+#    #+#              #
-#    Updated: 2024/06/01 17:14:01 by dolifero         ###   ########.fr        #
+#    Updated: 2024/06/03 17:05:11 by dolifero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS			=	ft_isalpha.c\
 					ft_tolower.c\
 					ft_strchr.c\
 					ft_strrchr.c\
+					ft_strstr.c\
 					ft_strncmp.c\
 					ft_memchr.c\
 					ft_memcmp.c\

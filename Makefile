@@ -6,7 +6,7 @@
 #    By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 17:09:19 by dolifero          #+#    #+#              #
-#    Updated: 2024/06/03 16:26:16 by dolifero         ###   ########.fr        #
+#    Updated: 2024/06/03 18:15:41 by dolifero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,14 @@
 
 NAME			= minishell
 
-SRCS			=	
+SRCS			=	parsing.c
 
 OBJS			= $(SRCS:.c=.o)
 
 CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
+LDFLAGS			= -lreadline
 
 LIBFT_DIR 		= Libft
 LIBFT			= $(LIBFT_DIR)/libft.a
@@ -49,12 +50,46 @@ YELLOW		=	\033[0;93m
 BLUE		=	\033[0;94m
 MAGENTA		=	\033[0;95m
 CYAN		=	\033[2;96m
+BR_CYAN		=	\033[0;96m
 WHITE		=	\033[0;97m
 
-all:
-				@echo "\n$(BOLD_CYAN)Starting $(BOLD_WHITE)[${NAME}] $(BOLD_CYAN)compilation..$(DEF_COLOR)\n"
-				@Make ${NAME}
-				@echo "\n$(BOLD_GREEN)${NAME} DONE!\n$(DEF_COLOR)"
+all:			$(NAME)
+				clear;
+				@echo "\n$(BR_CYAN)              _       _      __         ____"
+				@echo "   ____ ___  (_)___  (_)____/ /_  ___  / / /"
+				@echo "  / __  __ \/ / __ \/ / ___/ __ \/ _ \/ / / "
+				@echo " / / / / / / / / / / (__  ) / / /  __/ / /  "
+				@echo "/_/ /_/ /_/_/_/ /_/_/____/_/ /_/\___/_/_/   "
+				@echo "                                            $(BOLD_CYAN)\n"
+				@$(MAKE) loading
+				clear;
+				@echo "\n$(GREEN)              _       _      __         ____"
+				@echo "   ____ ___  (_)___  (_)____/ /_  ___  / / /"
+				@echo "  / __  __ \/ / __ \/ / ___/ __ \/ _ \/ / / "
+				@echo " / / / / / / / / / / (__  ) / / /  __/ / /        $(BOLD_GREEN)-tecker$(GREEN)"
+				@echo "/_/ /_/ /_/_/_/ /_/_/____/_/ /_/\___/_/_/        $(BOLD_GREEN)-dolifero$(GREEN)"
+				@echo "                                            $(DEF_COLOR)\n"
+				@echo "             $(BOLD_GREEN)${NAME} DONE!\n$(DEF_COLOR)"
+
+$(NAME):		$(OBJS) $(LIBFT)
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) -L $(LIBFT_DIR) -lft
+
+SHELL_CYAN:
+
+SHELL_GREEN:
+
+
+loading:
+				@for i in {1..42}; do \
+					printf '%s' "█"; \
+					sleep 0.01; \
+				done
+
+$(LIBFT):
+				$(MAKE) -C $(LIBFT_DIR)
+
+%.o: %.c
+				$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 				@echo "$(CYAN)"
@@ -66,13 +101,6 @@ fclean:
 				$(RM) $(OBJS) $(NAME) $(LIBFT_DIR)/*.o $(LIBFT)
 				@echo "$(DEF_COLOR)"
 
-$(NAME):		$(OBJS) $(LIBFT)
-				@echo "$(CYAN)"
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
-				@echo "$(DEF_COLOR)"
-
-$(LIBFT):
-				$(MAKE) -C $(LIBFT_DIR)
 
 re:				fclean all
 
