@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 16:54:47 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/03 18:58:36 by dolifero         ###   ########.fr       */
+/*   Created: 2024/06/05 15:08:37 by dolifero          #+#    #+#             */
+/*   Updated: 2024/06/05 15:09:38 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-# include "Libft/libft.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+# include "minishell.h"
 
 typedef struct s_input
 {
