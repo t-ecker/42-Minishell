@@ -6,7 +6,7 @@
 #    By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 17:09:19 by dolifero          #+#    #+#              #
-#    Updated: 2024/06/05 15:05:59 by dolifero         ###   ########.fr        #
+#    Updated: 2024/06/05 17:13:46 by dolifero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ NAME			= minishell
 
 SRCS			=	prompt.c\
 					execution/if_nest.c\
+					execution/change_dir.c\
 					minishell.c
 
 OBJS			= $(SRCS:.c=.o)

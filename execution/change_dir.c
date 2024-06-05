@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   if_nest.c                                          :+:      :+:    :+:   */
+/*   change_dir.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 14:59:59 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/05 17:16:19 by dolifero         ###   ########.fr       */
+/*   Created: 2024/06/05 16:12:28 by dolifero          #+#    #+#             */
+/*   Updated: 2024/06/05 17:25:55 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_execute(char *input)
+void	ch_dir(char *input)
 {
-	if (ft_strstr(input, "exit"))
-	{
-		free(input);
-		exit (0);
-	}
-	else if (ft_strstr(input, "cd"))
-	{
-		free(input);
-		ch_dir(input);
-	}
-	else
-	{
-		free(input);
-		ft_printf("Error: command not found\n");
-	}
+	char	*path;
+
+	path = trim_dir_path(input);
+	if (!path)
+		return ;
+	if (chdir(path) == -1)
+		ft_printf("%s: %s\n", strerror(errno), path);
 }
