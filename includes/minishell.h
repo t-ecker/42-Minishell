@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:54:47 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/05 16:42:14 by dolifero         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:27:57 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include <readline/history.h>
 # include "../Libft/libft.h"
 # include "functions.h"
+# include "test.h"
 
 #endif

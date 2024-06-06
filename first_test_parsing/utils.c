@@ -1,6 +1,7 @@
-#include "test.h"
+#include "../includes/minishell.h"
 
-const char *node_type_to_string(t_node_type type) {
+const char *node_type_to_string(t_node_type type)
+{
     switch (type) {
         case N_COMMAND:
             return "N_COMMAND";
@@ -23,12 +24,15 @@ const char *node_type_to_string(t_node_type type) {
     }
 }
 
-
-void print_ast_helper(t_ast *node, const char *prefix, const char *child_prefix)
+void print_ast_helper(t_ast *node, char *prefix)
 {
     if (!node) return;
 
     printf("%sNode Type: %s\n", prefix, node_type_to_string(node->type));
+
+    if (node->filename) {
+        printf("%sFilename: %s\n", prefix, node->filename);
+    }
 
     if (node->args) {
         printf("%sArguments: ", prefix);
@@ -38,45 +42,51 @@ void print_ast_helper(t_ast *node, const char *prefix, const char *child_prefix)
         printf("\n");
     }
 
-    if (node->filename) {
-        printf("%sFilename: %s\n", prefix, node->filename);
-    }
-
     if (node->left) {
         printf("%sLeft:\n", prefix);
-        print_ast_helper(node->left, child_prefix, child_prefix);
+        print_ast_helper(node->left, strcat(strcat(strdup(prefix), "  "), "  "));
     }
 
     if (node->right) {
         printf("%sRight:\n", prefix);
-        print_ast_helper(node->right, child_prefix, child_prefix);
+        print_ast_helper(node->right, strcat(strcat(strdup(prefix), "  "), "  "));
     }
 }
 
-void print_ast(t_ast *node) {
-    print_ast_helper(node, "", "  ");
+void print_ast(t_ast *node)
+{
+    print_ast_helper(node, "");
+    printf("\n");
 }
 
-void free_ast(t_ast *node) {
+
+void free_ast(t_ast *node)
+{
     if (!node) return;
 
-    if (node->type == N_COMMAND) {
-        if (node->args) {
-            for (int i = 0; node->args[i]; i++) {
+    if (node->type == N_COMMAND)
+    {
+        if (node->args)
+        {
+            for (int i = 0; node->args[i]; i++)
+            {
                 free(node->args[i]);
             }
             free(node->args);
         }
-    } else if (node->type == N_GREAT) {
-        if (node->filename) {
+    }
+    else if (node->type == N_GREAT || node->type == N_LESS)
+    {
+        if (node->filename)
             free(node->filename);
-        }
     }
 
     free_ast(node->left);
     free_ast(node->right);
     free(node);
 }
+
+
 
 void free_tokens(t_token *token)
 {
@@ -86,9 +96,11 @@ void free_tokens(t_token *token)
         tmp = token;
         token = token->next;
         free(tmp->value);
-        free(tmp);
+        tmp->value = NULL;
+        free(tmp); // Free the token after its value
     }
 }
+
 const char *token_type_to_string(t_token_type type)
 {
     if (type == T_IDENTIFIER)
@@ -107,6 +119,24 @@ const char *token_type_to_string(t_token_type type)
         return "T_OR	";
     else if (type == T_AND)
         return "T_AND	";
+    else if (type == T_OPAR)
+        return "T_OPAR	";
+    else if (type == T_CPAR)
+        return "T_CPAR	";
     else
         return "UNKNOWN";
+}
+
+void print_token(t_token *token)
+{
+    int i = 1;
+    t_token *head = token;
+
+    while (head)
+	{
+        printf("\n");
+        printf("token %d, type:%s		value: %s", i, token_type_to_string(head->type), head->value);
+        i++;
+        head = head->next;
+    }
 }
