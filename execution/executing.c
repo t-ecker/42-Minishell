@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_dir.c                                       :+:      :+:    :+:   */
+/*   executing.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 16:12:28 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/06 18:44:09 by dolifero         ###   ########.fr       */
+/*   Created: 2024/06/06 18:09:27 by dolifero          #+#    #+#             */
+/*   Updated: 2024/06/06 18:24:04 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ch_dir(char *path)
+void	evaluate_ast(t_ast *ast)
 {
-	if (!path)
-	{
-		if (getenv("HOME") == NULL)
-			return ((void)ft_printf("HOME is not set"));
-		return (ch_dir(getenv("HOME")));
-	}
-	if (chdir(path) == -1)
-		ft_printf("%s: %s\n", strerror(errno), path);
+	if (ast->type == N_COMMAND)
+		ft_execute_command(ast->args);
 }

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_dir.c                                       :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 16:12:28 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/06 18:44:09 by dolifero         ###   ########.fr       */
+/*   Created: 2024/06/06 18:53:39 by dolifero          #+#    #+#             */
+/*   Updated: 2024/06/06 19:03:11 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ch_dir(char *path)
+void	ft_echo(char **arguments)
 {
-	if (!path)
-	{
-		if (getenv("HOME") == NULL)
-			return ((void)ft_printf("HOME is not set"));
-		return (ch_dir(getenv("HOME")));
-	}
-	if (chdir(path) == -1)
-		ft_printf("%s: %s\n", strerror(errno), path);
+	if (strcmp(arguments[1], "-n") == 0)
+		ft_printf("%s", arguments[2]);
+	else
+		ft_printf("%s\n", arguments[1]);
 }
