@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   enumtypes.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 16:54:47 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/06 18:22:50 by dolifero         ###   ########.fr       */
+/*   Created: 2024/06/06 18:03:20 by dolifero          #+#    #+#             */
+/*   Updated: 2024/06/06 18:04:23 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef ENUMTYPES_H
+# define ENUMTYPES_H
 
-//EXTERNAL INCLUDES
+# include "minishell.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <errno.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <ctype.h>
+typedef enum s_token_type
+{
+	T_IDENTIFIER,
+	T_PIPE,
+	T_GREAT,
+	T_LESS,
+	T_DLESS,
+	T_DGREAT,
+	T_AND,
+	T_OR,
+	T_OPAR,
+	T_CPAR
+}					t_token_type;
 
-//INTERNAL INCLUDES
-
-# include "../Libft/libft.h"
-# include "enumtypes.h"
-# include "structs.h"
-# include "functions.h"
+typedef enum s_node_type
+{
+	N_COMMAND,
+	N_PIPE,
+	N_GREAT,
+	N_LESS,
+	N_DLESS,
+	N_DGREAT,
+	N_AND,
+	N_OR
+}					t_node_type;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:24 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/05 17:13:20 by dolifero         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:03:30 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 # define FUNCTIONS_H
 
 # include "minishell.h"
-
-char	*get_prompt(void);
-char	*trim_dir_path(char *dir_path);
-
-void	ft_execute(char *input);
-void	ch_dir(char *path);
+//MINISHELL PROMPT
+char			*get_prompt(void);
+char			*trim_dir_path(char *dir_path);
+//TOKENISING
+t_token			*get_token(char *input);
+void			print_token(t_token *token);
+void			free_tokens(t_token *token);
+//PARSING
+t_ast			*parse(t_token **token);
+void			print_ast(t_ast *node);
+void			free_ast(t_ast *node);
+//EXECUTION
+void			evaluate_ast(t_ast *ast);
+void			ft_execute_command(char **arguments);
+void			ch_dir(char *path);
+void			ft_echo(char **arguments);
 
 #endif
