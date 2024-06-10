@@ -6,7 +6,7 @@
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 18:03:20 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/06 18:04:23 by dolifero         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:38:15 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef enum s_token_type
 	T_OR,
 	T_OPAR,
 	T_CPAR
-}					t_token_type;
+}				t_token_type;
 
 typedef enum s_node_type
 {
@@ -39,6 +39,18 @@ typedef enum s_node_type
 	N_DGREAT,
 	N_AND,
 	N_OR
-}					t_node_type;
+}				t_node_type;
+
+typedef enum s_builtin_type
+{
+	NONE,
+	EXIT,
+	PWD,
+	CD,
+	ENV,
+	EXPORT,
+	UNSET,
+	ECHO
+}				t_builtin_type;
 
 #endif
