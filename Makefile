@@ -6,7 +6,7 @@
 #    By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 17:09:19 by dolifero          #+#    #+#              #
-#    Updated: 2024/06/06 19:03:43 by dolifero         ###   ########.fr        #
+#    Updated: 2024/06/10 17:11:26 by dolifero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,16 +22,27 @@
 #                                                                              #
 # **************************************************************************** #
 
+vpath %.c builtin_commands
+vpath %.c environment
+vpath %.c execution
+vpath %.c parsing
+vpath %.c prompts
+vpath %.c utilities
+
 NAME			= minishell
 
-SRCS			=	prompts/prompt.c\
-					parsing/utils.c\
-					parsing/parsing.c\
-					parsing/token.c\
-					execution/if_nest.c\
-					execution/executing.c\
-					execution/change_dir.c\
-					execution/echo.c\
+SRCS			=	prompt.c\
+					utils.c\
+					parsing.c\
+					token.c\
+					executing.c\
+					if_builtin.c\
+					execute_builtin.c\
+					change_dir.c\
+					echo.c\
+					pwd.c\
+					exit.c\
+					freeing.c\
 					minishell.c
 
 OBJS			= $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:24 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/06 19:03:30 by dolifero         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:19:15 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,15 @@ t_ast			*parse(t_token **token);
 void			print_ast(t_ast *node);
 void			free_ast(t_ast *node);
 //EXECUTION
-void			evaluate_ast(t_ast *ast);
-void			ft_execute_command(char **arguments);
+void			evaluate_ast(t_shell *ms);
+int				command_is_builtin(char **args);
+void			ft_execute_builtin(t_shell *ms);
+//BUILTIN COMMANDS
 void			ch_dir(char *path);
+void			ft_pwd(void);
 void			ft_echo(char **arguments);
+void			ft_exit(t_shell *ms);
+//UTILITIES
+void			free_ms(t_shell *ms);
 
 #endif

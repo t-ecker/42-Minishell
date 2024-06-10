@@ -6,7 +6,7 @@
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:54:07 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/06 18:24:13 by dolifero         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:23:13 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,26 @@ void	leaks(void)
 
 int	main(void)
 {
-	char	*input;
-	char	*prompt;
+	t_shell	ms;
 	t_token	*token;
 	t_token	*tmp;
 	t_token	*tmp2;
-	t_ast	*ast;
 
-	// atexit(leaks);
+	atexit(leaks);
 	while (1)
 	{
-		prompt = get_prompt();
-		input = readline(prompt);
-		token = get_token(input);
+		ms.prompt = get_prompt();
+		ms.input = readline(ms.prompt);
+		add_history(ms.input);
+		token = get_token(ms.input);
 		tmp = token;
 		tmp2 = token;
-		ast = parse(&token);
+		ms.ast = parse(&token);
 		print_token(tmp);
 		printf("\n\n");
-		print_ast(ast);
-		evaluate_ast(ast);
+		print_ast(ms.ast);
+		evaluate_ast(&ms);
 		free_tokens(tmp2);
-		free_ast(ast);
-		free(prompt);
+		free_ms(&ms);
 	}
 }
