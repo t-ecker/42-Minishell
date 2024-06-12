@@ -25,6 +25,7 @@ const char	*node_type_to_string(t_node_type type)
 	}
 }
 #include <string.h>
+
 void	print_ast_helper(t_ast *node, char *prefix)
 {
 	if (!node)
@@ -80,20 +81,22 @@ const char	*token_type_to_string(t_token_type type)
 	else if (type == T_OR)
 		return ("T_OR	");
 	else if (type == T_AND)
-		return "T_AND	";
+		return ("T_AND	");
 	else if (type == T_OPAR)
-		return "T_OPAR	";
+		return ("T_OPAR	");
 	else if (type == T_CPAR)
-		return "T_CPAR	";
+		return ("T_CPAR	");
 	else
-		return "UNKNOWN";
+		return ("UNKNOWN");
 }
 
 void	print_token(t_token *token)
 {
-	int i = 1;
-	t_token *head = token;
+	int		i;
+	t_token	*head;
 
+	i = 1;
+	head = token;
 	while (head)
 	{
 		printf("\n");
@@ -143,9 +146,10 @@ void	free_tokens(t_token *token)
 	}
 }
 
-int error_indicator(int i, char *str)
+int	error_indicator(int i, char *str)
 {
-	static int b = 0;
+	static int	b = 0;
+
 	if (str)
 		ft_printf("%s\n", str);
 	if (i == 1)
@@ -155,8 +159,8 @@ int error_indicator(int i, char *str)
 	return (b);
 }
 
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
-    return (c == ' ' || c == '\f' || c == '\n'
-		|| c == '\r' || c == '\t' || c == '\v');
+	return (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t'
+		|| c == '\v');
 }

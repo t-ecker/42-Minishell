@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:08:37 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/12 12:35:04 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:10:54 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_ast
 	char			*heredoc;
 	struct s_ast	*left;
 	struct s_ast	*right;
-	struct s_shell 	ms;
+	struct s_shell	ms;
 }					t_ast;
 
 #endif

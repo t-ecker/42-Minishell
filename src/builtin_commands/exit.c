@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:38:22 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/11 22:46:31 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:34:29 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_exit(t_ast *ast)
 	if (ast->args[1] != NULL)
 	{
 		if (ast->args[2] != NULL && !ft_atoi(ast->args[1]))
-			return ((void)ft_putendl_fd("exit: too many arguments",
+			return ((void)ft_putendl_fd("exit: numeric argument required",
 					STDERR_FILENO));
 		else if (!atoi(ast->args[1]))
 			exit_code = 255;

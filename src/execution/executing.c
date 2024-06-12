@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executing.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 18:09:27 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/11 23:10:35 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:02:18 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	command_execute(t_ast *ast)
 {
 	int	builtin;
-	int pid;
+	int	pid;
 
 	builtin = command_is_builtin(ast->args);
 	if (builtin)
@@ -30,7 +30,6 @@ void	command_execute(t_ast *ast)
 		else
 			if (waitpid(pid, NULL, 0) == -1)
 				ft_error(ast, "waitpid");
-		// ft_printf("I didn't make it yet\n");
 	}
 }
 
@@ -139,9 +138,9 @@ void and_or_execution(t_ast *ast)
 
 void	evaluate_ast(t_ast *ast)
 {
-	int std_in;
-	int std_out;
-	
+	int	std_in;
+	int	std_out;
+
 	if (ast->type == N_LESS || ast->type == N_GREAT)
 	{
 		std_in = dup(STDIN_FILENO);
