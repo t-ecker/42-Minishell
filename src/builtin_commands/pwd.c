@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeing.c                                          :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 17:08:26 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/10 17:13:18 by dolifero         ###   ########.fr       */
+/*   Created: 2024/06/10 15:24:18 by dolifero          #+#    #+#             */
+/*   Updated: 2024/06/11 17:29:43 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	free_ms(t_shell *ms)
+void	ft_pwd(void)
 {
-	free_ast(ms->ast);
-	free(ms->input);
-	free(ms->prompt);
+	char	*pwd;
+
+	pwd = getcwd(NULL, 0);
+	ft_printf("%s\n", pwd);
+	free(pwd);
 }
