@@ -6,7 +6,7 @@
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:54:07 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/12 16:03:14 by dolifero         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:33:14 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,23 @@ void	leaks(void)
 	system("leaks minishell");
 }
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	t_ast	*ast;
 	t_token	*token;
 	t_token	*tmp;
 	char	*input;
 	char	*prompt;
+	char	**env;
+	char	**exp;
 
-	// atexit(leaks);
+	(void)argc;
+	(void)argv;
+	env = env_init(envp);
+	if (!env)
+		exit(1);
+	exp = exp_init(env);
+	print_env(exp);
 	while (1)
 	{
 		prompt = get_prompt();
