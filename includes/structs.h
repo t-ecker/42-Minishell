@@ -6,7 +6,7 @@
 /*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:08:37 by dolifero          #+#    #+#             */
-/*   Updated: 2024/06/12 15:10:54 by dolifero         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:21:51 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_shell
 	char			*input;
 	char			*prompt;
 	t_token			*token;
+	char			**env;
+	char			**exp;
 }					t_shell;
 
 typedef struct s_ast
