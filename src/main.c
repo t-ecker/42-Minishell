@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dolifero <dolifero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:54:07 by dolifero          #+#    #+#             */
-/*   Updated: 2024/07/18 13:17:58 by tecker           ###   ########.fr       */
+/*   Updated: 2024/11/22 16:30:40 by dolifero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	get_input(t_data *data)
 	data->input = readline(data->prompt);
 	if (!data->input)
 	{
-		ft_printf("%sexit\n", data->prompt);
+		ft_printf("%sexit \n", data->prompt);
 		free(data->prompt);
 		free(data->input);
 		free_environment(data->env);
